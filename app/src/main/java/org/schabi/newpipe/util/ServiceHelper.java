@@ -42,6 +42,8 @@ public final class ServiceHelper {
                 return R.drawable.place_holder_bandcamp;
             case 5:
                 return R.drawable.place_holder_bitchute;
+            case 6:
+                return R.drawable.place_holder_rumble;
             default:
                 return R.drawable.place_holder_circle;
         }

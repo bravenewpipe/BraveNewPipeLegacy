@@ -70,6 +70,25 @@
         <item name="colorAccent">@color/dark_bitchute_accent_color</item>
     </style>
 
+    <!-- Rumble -->
+    <style name="LightTheme.Rumble" parent="LightTheme">
+        <item name="colorPrimary">@color/light_rumble_primary_color</item>
+        <item name="colorPrimaryDark">@color/light_rumble_dark_color</item>
+        <item name="colorAccent">@color/light_rumble_accent_color</item>
+    </style>
+
+    <style name="DarkTheme.Rumble" parent="DarkTheme">
+        <item name="colorPrimary">@color/dark_rumble_primary_color</item>
+        <item name="colorPrimaryDark">@color/dark_rumble_dark_color</item>
+        <item name="colorAccent">@color/dark_rumble_accent_color</item>
+    </style>
+
+    <style name="BlackTheme.Rumble" parent="BlackTheme">
+        <item name="colorPrimary">@color/dark_rumble_primary_color</item>
+        <item name="colorPrimaryDark">@color/dark_rumble_dark_color</item>
+        <item name="colorAccent">@color/dark_rumble_accent_color</item>
+    </style>
+
     <!-- media.ccc.de -->
     <style name="LightTheme.media.ccc.de" parent="LightTheme">
         <item name="colorPrimary">@color/light_media_ccc_primary_color</item>

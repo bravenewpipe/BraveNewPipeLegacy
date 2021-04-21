@@ -298,6 +298,26 @@
                 <data android:pathPrefix="/channel/"/>
             </intent-filter>
 
+            <!-- Rumble filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <action android:name="android.media.action.MEDIA_PLAY_FROM_SEARCH"/>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+
+                <data android:scheme="http"/>
+                <data android:scheme="https"/>
+                <data android:host="www.rumble.com"/>
+                <data android:host="rumble.com"/>
+                <!-- video prefix -->
+                <data android:pathPrefix="/v"/>
+                <data android:pathPrefix="/embed/"/>
+                <!-- channel prefix-->
+                <data android:pathPrefix="/c/"/>
+            </intent-filter>
+
             <!-- media.ccc.de filter -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
