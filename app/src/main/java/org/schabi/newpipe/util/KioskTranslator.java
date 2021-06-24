@@ -82,7 +82,7 @@ public final class KioskTranslator {
             case "Radio":
                 return R.drawable.ic_radio;
             default:
-                return 0;
+                return R.drawable.ic_stars;
         }
     }
 }
