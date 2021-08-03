@@ -1,0 +1,77 @@
+name: Android Build Release Workflow
+
+on:
+  push:
+    branches: [ dev ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gradle/wrapper-validation-action@v1
+
+      - name: create and checkout branch
+        # push events already checked out the branch
+        if: github.event_name == 'pull_request'
+        run: git checkout -B ${{ github.head_ref }}
+
+      #- name: restoreReleaseKeystore
+      #  run: |
+      #      echo  "${{ secrets.RELEASE_KEYSTORE }}" -d -o release.keystore release.keystore.asc
+      #      gpg --batch --passphrase "${{ secrets.RELEASE_KEYSTORE_GPG }}" -d -o release.keystore release.keystore.asc
+
+      - name: set up JDK 8
+        uses: actions/setup-java@v2
+        with:
+          java-version: 8
+          distribution: "adopt"
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+
+      - name: Build Project
+        run: ./gradlew assemble
+
+      - name: build release
+        run: ./gradlew assembleRelease
+
+      - name: Sign app APK
+        uses: r0adkll/sign-android-release@v1
+        # ID used to access action output
+        id: sign_app
+        with:
+          releaseDirectory: app/build/outputs/apk/brave/release
+          signingKeyBase64: ${{ secrets.RELEASE_KEYSTORE }}
+          #alias: ${{ secrets.ALIAS }}
+          alias: alias_name
+          keyStorePassword: ${{ secrets.RELEASE_KEYSTORE_PASS }}
+          #keyPassword: ${{ secrets.RELEASE_KEYSTORE_PASS }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+          #path: app/build/outputs/apk/brave/release/*.apk
+      #- name: upload artefact to App Center
+      #  uses: wzieba/AppCenter-Github-Action@v1
+      #  with:
+      #    appName: ronakukani/Github-Actions-Demo
+      #    token: ${{secrets.APP_CENTER_TOKEN}}
+      #    group: Testers
+      #    file: app/build/outputs/apk/release/app-release.apk
+      #    notifyTesters: true
+      #    debug: false
+      #    releaseNotes: "here is your release note"
+
+      #- name: Send message to ms teams
+      #  uses: dhollerbach/github-action-send-message-to-ms-teams@1.0.10
+      #  with:
+      #     webhook: 'Here is your Microsoft Teams Webhook URL'
+      #     message: 'Here is your message'
