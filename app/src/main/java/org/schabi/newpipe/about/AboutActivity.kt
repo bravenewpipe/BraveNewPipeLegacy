@@ -77,6 +77,7 @@ class AboutActivity : AppCompatActivity() {
         ): View {
             val aboutBinding = FragmentAboutBinding.inflate(inflater, container, false)
             aboutBinding.aboutAppVersion.text = BuildConfig.VERSION_NAME
+            aboutBinding.braveAbout.braveAboutGithubLink.openLink(R.string.brave_github_url)
             aboutBinding.aboutGithubLink.openLink(R.string.github_url)
             aboutBinding.aboutDonationLink.openLink(R.string.donation_url)
             aboutBinding.aboutWebsiteLink.openLink(R.string.website_url)
