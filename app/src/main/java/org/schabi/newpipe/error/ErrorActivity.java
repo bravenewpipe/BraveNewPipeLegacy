@@ -62,11 +62,11 @@ public class ErrorActivity extends AppCompatActivity {
     // BUNDLE TAGS
     public static final String ERROR_INFO = "error_info";
 
-    public static final String ERROR_EMAIL_ADDRESS = "crashreport@newpipe.schabi.org";
+    public static final String ERROR_EMAIL_ADDRESS = "crashreport@gmx.com";
     public static final String ERROR_EMAIL_SUBJECT = "Exception in ";
 
     public static final String ERROR_GITHUB_ISSUE_URL
-            = "https://github.com/TeamNewPipe/NewPipe/issues";
+            = "https://github.com/bravenewpipe/NewPipeExtractor/issues";
 
     public static final DateTimeFormatter CURRENT_TIMESTAMP_FORMATTER
             = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
