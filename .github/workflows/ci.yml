@@ -47,13 +47,13 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
           
       - name: Build debug APK and run jvm tests
-        run: ./gradlew assembleDebug lintDebug testDebugUnitTest --stacktrace -DskipFormatKtlint
+        run: ./gradlew assembleDebug lintBraveDebug testBraveDebugUnitTest --stacktrace -DskipFormatKtlint
 
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
           name: app
-          path: app/build/outputs/apk/debug/*.apk
+          path: app/build/outputs/apk/brave/debug/*.apk
 
   test-android:
     # macos has hardware acceleration. See android-emulator-runner action
