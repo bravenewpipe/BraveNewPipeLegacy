@@ -42,11 +42,11 @@ android {
             if (normalizedWorkingBranch.isEmpty() || workingBranch == "master" || workingBranch == "dev") {
                 // default values when branch name could not be determined or is master or dev
                 applicationIdSuffix ".debug"
-                resValue "string", "app_name", "NewPipe Debug"
+                resValue "string", "app_name", "BraveNewPipe Debug"
             } else {
                 applicationIdSuffix ".debug." + normalizedWorkingBranch
-                resValue "string", "app_name", "NewPipe " + workingBranch
-                archivesBaseName = 'NewPipe_' + normalizedWorkingBranch
+                resValue "string", "app_name", "BraveNewPipe " + workingBranch
+                archivesBaseName = 'BraveNewPipe_' + normalizedWorkingBranch
             }
         }
 
@@ -58,6 +58,27 @@ android {
             shrinkResources false // disabled to fix F-Droid's reproducible build
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             archivesBaseName = 'app'
+        }
+    }
+
+    // use productFlavors to keep the name/version changes AFAP for BraveNewPipe
+    // more separate in hope of not getting to many merge conflicts
+    flavorDimensions 'default'
+    productFlavors {
+        // the amount of trailing zeros depends on the amount of digits the
+        // defaultConfig.versionCode has -> we just prepend our increasing
+        // versionCode before those zeros.
+        def braveVersionCode = 1000
+        // -> our versionName will be added as suffix to defaultConfig.versionName
+        // We use major.minor.patch
+        def braveVersionName = "1.0.0"
+
+        brave {
+            dimension 'default'
+            applicationId "com.github.bravenewpipe"
+            resValue "string", "app_name", "BraveNewPipe"
+            versionCode defaultConfig.versionCode + braveVersionCode
+            versionName "${defaultConfig.versionName}-${braveVersionName}"
         }
     }
 
@@ -166,9 +187,9 @@ task formatKtlint(type: JavaExec) {
 
 afterEvaluate {
     if (!System.properties.containsKey('skipFormatKtlint')) {
-        preDebugBuild.dependsOn formatKtlint
+        preBraveDebugBuild.dependsOn formatKtlint
     }
-    preDebugBuild.dependsOn runCheckstyle, runKtlint
+    preBraveDebugBuild.dependsOn runCheckstyle, runKtlint
 }
 
 sonarqube {
@@ -302,4 +323,12 @@ static String getGitWorkingBranch() {
         // git was not found
         return ""
     }
+}
+
+// keep the changed dependencies for BraveNewPipe more
+// separate in hope of not getting to many merge conflicts
+configurations.all {
+    exclude group: 'com.github.TeamNewPipe', module: 'NewPipeExtractor'
+
+    project.getDependencies().implementation("com.github.bravenewpipe:NewPipeExtractor:64d5133f33a541894eab79307bbb382824b68dea")
 }
