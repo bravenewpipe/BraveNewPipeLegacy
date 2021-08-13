@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">A NewPipeTeam a korlátozó projektirányelvek miatt nem hajlandó olyan platformokat felvenni, amelyeket sértőnek talál. Ez a villa (BraveNewPipe) nem lesz ennyire korlátozó. Amíg a platformok a szabad véleménynyilvánítás szellemében működnek, addig integrálhatók. Mindazonáltal, a pornográfiát vagy más megalázó dolgokat népszerűsítő platformok <b>NEM</b> lesznek ide integrálva. Ez a fork csak más platformok integrálására fog összpontosítani. A nem releváns javításokat egyelőre elutasítjuk. Nyugodtan javasolhatja, hogy mely alternatív platformokat kellene támogatni. Bármilyen hozzájárulást (fejlesztés/teszt/hibajelentés) nagyon szívesen fogadunk. Jelenleg további platformok a NewPipe-hez képest:</string>
+    <string name="brave_about_title">Erről a villáról</string>
+</resources>

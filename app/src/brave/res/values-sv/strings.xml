@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">På grund av restriktiva projektpolicyer vägrar NewPipeTeam att lägga till plattformar som de anser vara stötande. Denna gaffel (BraveNewPipe) kommer inte att vara lika restriktiv. Så länge plattformarna fungerar i yttrandefrihetens anda kan de integreras. Plattformar som främjar pornografi eller andra förnedrande saker kommer dock <b>Inte</b> att integreras här. Den här gaffeln kommer endast att fokusera på att integrera andra plattformar. Patchar som inte är relevanta kommer att avvisas tills vidare. Du får gärna föreslå vilka alternativa plattformar som bör stödjas. Alla bidrag (utveckling/test/bug-rapport) är mycket välkomna. För närvarande finns ytterligare plattformar jämfört med NewPipe:</string>
+    <string name="brave_about_title">Om denna gaffel</string>
+</resources>

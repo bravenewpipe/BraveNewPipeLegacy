@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">由于项目政策的限制，NewPipeTeam拒绝添加他们认为不受欢迎的平台。这个分叉（BraveNewPipe）将不会有如此大的限制。只要这些平台本着自由表达的精神工作，它们就可以被整合。尽管如此，宣传色情或其他有辱人格事物的平台将<b>不</b>被整合到这里。这个分叉将只关注整合其他平台。不相关的补丁将被暂时拒绝。请随时建议应该支持哪些替代平台。非常欢迎任何贡献（开发/测试/bug报告）。目前与NewPipe相比，额外的平台：</string>
+    <string name="brave_about_title">关于这个叉子</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Vanwege een restrictief projectbeleid weigert het NewPipeTeam platforms toe te voegen die zij aanstootgevend vinden. Deze vork (BraveNewPipe) zal niet zo beperkend zijn. Zolang de platforms werken in de geest van vrije meningsuiting, kunnen zij worden geïntegreerd. Platforms die pornografie of andere vernederende zaken promoten zullen hier echter <b>NIET</b> worden geïntegreerd. Deze splitsing zal zich alleen richten op de integratie van andere platforms. Patches die niet relevant zijn, worden voorlopig afgewezen. Voel je vrij om te suggereren welke alternatieve platforms moeten worden ondersteund. Elke bijdrage (ontwikkeling/test/bug report) is zeer welkom. Momenteel extra platforms in vergelijking met NewPipe:</string>
+    <string name="brave_about_title">Over deze vork</string>
+</resources>

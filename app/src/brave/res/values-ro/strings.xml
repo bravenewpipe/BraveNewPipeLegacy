@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Din cauza politicilor restrictive ale proiectului, NewPipeTeam refuză să adauge platforme pe care le consideră ofensatoare. Această bifurcație (BraveNewPipe) nu va fi atât de restrictivă. Atâta timp cât platformele funcționează în spiritul libertății de exprimare, ele pot fi integrate. Cu toate acestea, platformele care promovează pornografia sau alte lucruri degradante nu vor fi <b>NU</b> integrate aici. Această bifurcație se va concentra doar pe integrarea altor platforme. Patch-urile care nu sunt relevante vor fi respinse deocamdată. Nu ezitați să sugerați ce platforme alternative ar trebui să fie acceptate. Orice contribuție (dezvoltare/test/raport de erori) este binevenită. În prezent, platforme suplimentare în comparație cu NewPipe:</string>
+    <string name="brave_about_title">Despre această furcă</string>
+</resources>

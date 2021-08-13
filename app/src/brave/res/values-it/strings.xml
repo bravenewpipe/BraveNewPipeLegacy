@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">A causa delle politiche restrittive del progetto, il NewPipeTeam rifiuta di aggiungere piattaforme che ritiene offensive. Questo fork (BraveNewPipe) non sarà così restrittivo. Finché le piattaforme lavorano nello spirito della libera espressione, possono essere integrate. Tuttavia, le piattaforme che promuovono la pornografia o altre cose degradanti <b>NON</b> saranno integrate qui. Questo fork si concentrerà solo sull\'integrazione di altre piattaforme. Le patch che non sono rilevanti saranno rifiutate per ora. Sentitevi liberi di suggerire quali piattaforme alternative dovrebbero essere supportate. Qualsiasi contributo (sviluppo/test/segnalazione di bug) è molto gradito. Attualmente piattaforme aggiuntive rispetto a NewPipe:</string>
+    <string name="brave_about_title">Informazioni su questa forcella</string>
+</resources>

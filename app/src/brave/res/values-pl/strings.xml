@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Ze względu na restrykcyjną politykę projektu, NewPipeTeam odmawia dodawania platform, które uważają za obraźliwe. Ten widelec (BraveNewPipe) nie będzie tak restrykcyjny. Tak długo, jak platformy działają w duchu wolnej ekspresji, mogą być zintegrowane. Niemniej jednak platformy, które promują pornografię lub inne poniżające rzeczy nie będą tutaj integrowane. Ten fork będzie się skupiał tylko na integracji innych platform. Łatki, które nie są istotne, będą na razie odrzucane. Zachęcamy do sugerowania, które alternatywne platformy powinny być wspierane. Każdy wkład (rozwój/test/raport o błędach) jest bardzo mile widziany. Obecnie dodatkowe platformy w porównaniu do NewPipe:</string>
+    <string name="brave_about_title">O tym widelcu</string>
+</resources>

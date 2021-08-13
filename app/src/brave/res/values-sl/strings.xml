@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Ekipa NewPipeTeam zaradi omejevalnih pravil projekta ne želi dodajati platform, ki se jim zdijo žaljive. Ta vilica (BraveNewPipe) ne bo tako omejujoča. Dokler platforme delujejo v duhu svobode izražanja, jih je mogoče povezati. Kljub temu platforme, ki spodbujajo pornografijo ali druge ponižujoče stvari, ne bodo vključene. Ta vilica se bo osredotočila le na integracijo drugih platform. Popravki, ki niso pomembni, bodo za zdaj zavrnjeni. Predlagajte, katere alternativne platforme bi bilo treba podpreti. Vsak prispevek (razvoj/test/poročilo o napaki) je zelo dobrodošel. Trenutno dodatne platforme v primerjavi z NewPipe:</string>
+    <string name="brave_about_title">O tej vilici</string>
+</resources>

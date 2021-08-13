@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Debido a las políticas restrictivas del proyecto, el NewPipeTeam se niega a añadir plataformas que considera objetables. Esta horquilla (BraveNewPipe) no será tan restrictiva. Mientras las plataformas funcionen con el espíritu de la libertad de expresión, pueden integrarse. Sin embargo, las plataformas que promueven la pornografía u otras cosas degradantes no serán integradas aquí. Esta bifurcación sólo se centrará en la integración de otras plataformas. Los parches que no sean relevantes serán rechazados por ahora. Siéntase libre de sugerir qué plataformas alternativas deberían ser apoyadas. Cualquier contribución (desarrollo/prueba/informe de errores) es muy bienvenida. Actualmente plataformas adicionales en comparación con NewPipe:</string>
+    <string name="brave_about_title">Sobre este tenedor</string>
+</resources>

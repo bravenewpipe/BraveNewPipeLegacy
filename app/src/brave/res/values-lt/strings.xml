@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Dėl griežtos projekto politikos "NewPipeTeam" atsisako pridėti platformas, kurios, jų nuomone, yra įžeidžiančios. Ši šakutė ("BraveNewPipe") nebus tokia ribojanti. Jei platformos veikia laisvos saviraiškos dvasia, jas galima integruoti. Vis dėlto pornografiją ar kitus žeminančius dalykus propaguojančios platformos čia nebus integruotos. Ši šakutė bus skirta tik kitų platformų integravimui. Netinkamos pataisos kol kas bus atmestos. Kviečiame siūlyti, kokias alternatyvias platformas reikėtų palaikyti. Bet koks indėlis (vystymas/testas/ataskaita apie klaidą) yra labai laukiamas. Šiuo metu papildomos platformos, palyginti su "NewPipe":</string>
+    <string name="brave_about_title">Apie šią šakutę</string>
+</resources>

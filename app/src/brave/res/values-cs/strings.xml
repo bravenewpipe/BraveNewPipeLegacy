@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Vzhledem k restriktivním zásadám projektu odmítá NewPipeTeam přidávat platformy, které považuje za urážlivé. Tato vidlice (BraveNewPipe) nebude tak omezující. Pokud platformy fungují v duchu svobody projevu, lze je integrovat. Nicméně platformy, které propagují pornografii nebo jiné ponižující věci, zde integrovány nebudou. Tento fork se zaměří pouze na integraci dalších platforem. Záplaty, které nejsou relevantní, budou prozatím odmítnuty. Neváhejte navrhnout, které alternativní platformy by měly být podporovány. Jakýkoli příspěvek (vývoj/test/hlášení chyb) je velmi vítán. V současné době další platformy ve srovnání s NewPipe:</string>
+    <string name="brave_about_title">O této vidlici</string>
+</resources>

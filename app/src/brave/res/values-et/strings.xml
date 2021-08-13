@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Projekti piiravate põhimõtete tõttu keeldub NewPipeTeam lisamast platvorme, mida nad peavad solvavaks. See kahvel (BraveNewPipe) ei ole nii piirav. Niikaua kui platvormid töötavad vaba sõnavabaduse vaimus, saab neid integreerida. Siiski, platvormid, mis propageerivad pornograafiat või muid alandavaid asju, <b>ei</b> integreerita siia. See kahvel keskendub ainult teiste platvormide integreerimisele. Mittekohased parandused lükatakse esialgu tagasi. Võite vabalt soovitada, milliseid alternatiivseid platvorme tuleks toetada. Igasugune panus (arendus/test/veaaruanne) on väga teretulnud. Praegu täiendavad platvormid võrreldes NewPipe\'iga:</string>
+    <string name="brave_about_title">Selle kahvli kohta</string>
+</resources>

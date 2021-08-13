@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Rajoittavien projektikäytäntöjen vuoksi NewPipeTeam kieltäytyy lisäämästä alustoja, jotka ovat heidän mielestään loukkaavia. Tämä haarukka (BraveNewPipe) ei ole niin rajoittava. Kunhan alustat toimivat sananvapauden hengessä, ne voidaan integroida. Siitä huolimatta alustoja, jotka edistävät pornografiaa tai muita halventavia asioita, ei <b>EI</b> integroida tänne. Tässä haarassa keskitytään vain muiden alustojen integrointiin. Laastarit, jotka eivät ole relevantteja, hylätään toistaiseksi. Voit vapaasti ehdottaa, mitä vaihtoehtoisia alustoja pitäisi tukea. Mikä tahansa panos (kehitys/testaus/vikailmoitus) on erittäin tervetullut. Tällä hetkellä ylimääräisiä alustoja verrattuna NewPipeen:</string>
+    <string name="brave_about_title">Tietoa tästä haarukasta</string>
+</resources>

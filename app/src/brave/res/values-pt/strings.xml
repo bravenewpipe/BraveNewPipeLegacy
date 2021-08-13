@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Devido às políticas restritivas do projecto, a NewPipeTeam recusa-se a acrescentar plataformas que consideram ofensivas. Este garfo (BraveNewPipe) não será tão restritivo. Desde que as plataformas funcionem no espírito da livre expressão, elas podem ser integradas. No entanto, plataformas que promovem a pornografia ou outras coisas degradantes <b>NÃO</b> serão integradas aqui. Este garfo apenas se concentrará na integração de outras plataformas. Os remendos que não sejam relevantes serão rejeitados por agora. Sinta-se à vontade para sugerir que plataformas alternativas devem ser apoiadas. Qualquer contribuição (relatório de desenvolvimento/teste/bug) é muito bem-vinda. Actualmente plataformas adicionais em comparação com NewPipe:</string>
+    <string name="brave_about_title">Sobre este garfo</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="brave_about_fork">Ierobežojošās projekta politikas dēļ NewPipeTeam atsakās pievienot platformas, kuras uzskata par aizskarošām. Šī dakša (BraveNewPipe) nebūs tik ierobežojoša. Kamēr platformas darbojas vārda brīvības garā, tās var integrēt. Tomēr platformas, kas popularizē pornogrāfiju vai citas pazemojošas lietas, šeit netiks integrētas. Šī dakša būs vērsta tikai uz citu platformu integrēšanu. Patlaban netiks pieņemti tādi labojumi, kas nav būtiski. Varat brīvi ieteikt, kuras alternatīvas platformas būtu jāatbalsta. Jebkurš ieguldījums (attīstība / testi / kļūdu ziņojums) ir ļoti gaidīts. Pašlaik papildu platformas salīdzinājumā ar NewPipe:</string>
+    <string name="brave_about_title">Par šo dakšiņu</string>
+</resources>
