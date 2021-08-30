@@ -332,3 +332,6 @@ configurations.all {
 
     project.getDependencies().implementation("com.github.bravenewpipe:NewPipeExtractor:7ca820845f1d666b73d8a5ba841cfcfb800f7b02")
 }
+
+// replace NewPipe with BraveNewPipe in all strings.xml
+apply from: 'replace-newpipe-with-bravenewpipe-strings.gradle'
