@@ -25,6 +25,10 @@ def shouldWeReplaceStuffInThisLine = { line ->
     return true
 }
 
+def cleanupDirBefore = { dir ->
+    delete "${dir}"
+}
+
 // the return value points to the new srcDir containing the modified files
 ext.copyFilesAndReplaceStrings = { dir, tmpTargetDir ->
     println "[BraveNewPipe string replacing] source dir: " + dir
@@ -67,6 +71,7 @@ android.applicationVariants.all { variant ->
             sourceSet.res.srcDirs = sourceSet.res.srcDirs.collect { dir ->
                 def relDir = relativePath(dir)
                 def tmpTargetDir = "${buildDir}/tmp/${variant.dirName}/${relDir}"
+                cleanupDirBefore(tmpTargetDir)
                 return copyFilesAndReplaceStrings(dir, tmpTargetDir)
             }
         }
@@ -83,5 +88,6 @@ task testReplacingStrings() {
     def sourceDir = "${rootDir}/app/${relativeDirFile}/"
     def targetDir = "${buildDir}/tmp/${relativeDirFile}/test_output"
 
+    cleanupDirBefore(targetDir)
     copyFilesAndReplaceStrings(sourceDir, targetDir)
 }
