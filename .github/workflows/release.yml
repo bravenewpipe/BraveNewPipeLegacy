@@ -25,11 +25,11 @@ jobs:
       #      echo  "${{ secrets.RELEASE_KEYSTORE }}" -d -o release.keystore release.keystore.asc
       #      gpg --batch --passphrase "${{ secrets.RELEASE_KEYSTORE_GPG }}" -d -o release.keystore release.keystore.asc
 
-      - name: set up JDK 8
+      - name: set up JDK 11
         uses: actions/setup-java@v2
         with:
-          java-version: 8
-          distribution: "adopt"
+          java-version: 11
+          distribution: "temurin"
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v2
