@@ -73,7 +73,7 @@ android {
         // the amount of trailing zeros depends on the amount of digits the
         // defaultConfig.versionCode has -> we just prepend our increasing
         // versionCode before those zeros.
-        def braveVersionCode = 5000
+        def braveVersionCode = 6000
         // -> our versionName will be added as suffix to defaultConfig.versionName
         // We use major.minor.patch
         def braveVersionName = "1.0.3"
