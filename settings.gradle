@@ -6,6 +6,6 @@ include ':app'
 
 //includeBuild('../NewPipeExtractor') {
 //    dependencySubstitution {
-//        substitute module('com.github.bravenewpipe:NewPipeExtractor') with project(':extractor')
+//        substitute module('com.github.bravenewpipe:NewPipeExtractor') using project(':extractor')
 //    }
 //}
