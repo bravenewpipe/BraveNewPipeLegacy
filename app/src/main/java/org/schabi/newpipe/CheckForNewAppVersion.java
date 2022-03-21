@@ -48,9 +48,8 @@ public final class CheckForNewAppVersion extends IntentService {
 
     // Public key of the certificate that is used in NewPipe release versions
     private static final String RELEASE_CERT_PUBLIC_KEY_SHA1
-            = "C3:96:13:CD:13:92:3F:37:EE:B6:9F:7A:0D:EA:7C:70:E0:7A:73:D8";
-    private static final String NEWPIPE_API_URL
-            = "https://raw.githubusercontent.com/bravenewpipe/bnp-r-mgr/master/api/data.json";
+            = "B0:2E:90:7C:1C:D6:FC:57:C3:35:F0:88:D0:8F:50:5F:94:E4:D2:15";
+    private static final String NEWPIPE_API_URL = "https://newpipe.net/api/data.json";
 
     /**
      * Method to get the APK's SHA1 key. See https://stackoverflow.com/questions/9293019/#22506133.
