@@ -58,6 +58,66 @@ ext.copyFilesAndReplaceStrings = { dir, tmpTargetDir ->
     }
     return "${tmpTargetDir}"
 }
+
+// replace variables content for specific files
+ext.alterFilesAndVerify = { targetDir, isTest ->
+
+    if (targetDir.contains('src/main/java') or isTest) { // only look into the 'main' variant
+        replaceAndVerify('s', true, targetDir,
+                /* filename: */ 'org/schabi/newpipe/error/ErrorActivity.java',
+                /* match: */ 'ERROR_EMAIL_ADDRESS = "crashreport@newpipe.schabi.org"',
+                /* replace: */ 'ERROR_EMAIL_ADDRESS = "crashreport@gmx.com"',
+                /* verify: */ 'crashreport@gmx.com')
+
+        replaceAndVerify('m', false, targetDir,
+                /* filename: */ 'org/schabi/newpipe/error/ErrorActivity.java',
+                /* match: */ '(public static final String ERROR_GITHUB_ISSUE_URL.*\n[^=]*=)[^;]*',
+                /* replace: */ '\\1 "https://github.com/bravenewpipe/NewPipeExtractor/issues"',
+                /* verify: */ 'https://github.com/bravenewpipe/NewPipeExtractor/issues')
+
+        replaceAndVerify('s', true, targetDir,
+                /* filename: */ 'org/schabi/newpipe/util/ReleaseVersionUtil.kt',
+                /* match: */ '"B0:2E:90:7C:1C:D6:FC:57:C3:35:F0:88:D0:8F:50:5F:94:E4:D2:15"',
+                /* replace: */ '"C3:96:13:CD:13:92:3F:37:EE:B6:9F:7A:0D:EA:7C:70:E0:7A:73:D8"',
+                /* verify: */ '"C3:96:13:CD:13:92:3F:37:EE:B6:9F:7A:0D:EA:7C:70:E0:7A:73:D8"')
+
+        replaceAndVerify('m', false, targetDir,
+                /* filename: */ 'org/schabi/newpipe/NewVersionWorker.kt',
+                /* match: */ '(private const val NEWPIPE_API_URL =).*',
+                /* replace: */ '\\1\n            "https://raw.githubusercontent.com/bravenewpipe/bnp-r-mgr/master/api/data.json"',
+                /* verify: */ '"https://raw.githubusercontent.com/bravenewpipe/bnp-r-mgr/master/api/data.json"')
+    }
+
+    return "${targetDir}"
+}
+
+ext.replaceAndVerify = { flags, byline, dir, fileName, match, replace, verify ->
+    assert file(dir + '/' + fileName).exists()
+
+    // check if file is already changed
+    def lines2 = new File(dir + '/' + fileName).readLines()
+    def result2 = lines2.find { it.contains(verify) }
+    if (result2 != null) {
+        println "[BraveNewPipe] already changed $match in $fileName"
+        // already changed so return
+        return
+    }
+
+    println "[BraveNewPipe] string replacing in file: " + fileName + ' [What:]' + match
+    ant.replaceregexp(
+            match:match,
+            replace:replace,
+            flags:flags,
+            byline:byline) {
+        fileset(dir: dir, includes: fileName)
+    }
+
+    // verify that it really got changed
+    def lines = new File(dir + '/' + fileName).readLines()
+    def result = lines.find { it.contains(verify) }
+    //println result
+    assert result != null : "No match for '${match} in ${fileName}"
+}
 // end -- vars and helper function
 
 // * * * * * * * * * * * *
@@ -78,16 +138,34 @@ android.applicationVariants.all { variant ->
     }
 }
 
-// only for testing copyFilesAndReplaceStrings()
+// only for DEBUGGING of copyFilesAndReplaceStrings() or
+// alterFilesAndVerify()
 task testReplacingStrings() {
-    return // comment complete line if you want to run this task
+    // -> comment the 'return' statement to actually start debugging
+    return
 
     println "[TESTING BraveNewPipe string replacing]"
 
+    // modify .{xml} files
     def relativeDirFile = 'src/main/res'
     def sourceDir = "${rootDir}/app/${relativeDirFile}/"
     def targetDir = "${buildDir}/tmp/${relativeDirFile}/test_output"
-
     cleanupDirBefore(targetDir)
     copyFilesAndReplaceStrings(sourceDir, targetDir)
+}
+
+// Patch NewPipe to use BraveNewPipe's:
+// - support email address
+// - the update json data URL
+// - the apk signature
+// This task (if enabled) will run on the current code base and
+// does this job for you automatically. To be re-run if needed.
+// -- evermind --
+task testReplaceMailandJsonandSignature() {
+    return // enable only when you want it to run
+
+    // modify .{java,kt} files
+    def relativeDirFile = 'src/main/java'
+    def sourceDir = "${rootDir}/app/${relativeDirFile}/"
+    alterFilesAndVerify(sourceDir, true)
 }
