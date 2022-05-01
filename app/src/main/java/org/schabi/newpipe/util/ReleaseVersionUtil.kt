@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter
 object ReleaseVersionUtil {
     // Public key of the certificate that is used in NewPipe release versions
     private const val RELEASE_CERT_PUBLIC_KEY_SHA1 =
-        "B0:2E:90:7C:1C:D6:FC:57:C3:35:F0:88:D0:8F:50:5F:94:E4:D2:15"
+        "C3:96:13:CD:13:92:3F:37:EE:B6:9F:7A:0D:EA:7C:70:E0:7A:73:D8"
 
     @JvmStatic
     fun isReleaseApk(): Boolean {

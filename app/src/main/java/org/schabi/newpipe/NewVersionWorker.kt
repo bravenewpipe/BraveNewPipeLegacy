@@ -135,7 +135,8 @@ class NewVersionWorker(
     companion object {
         private val DEBUG = MainActivity.DEBUG
         private val TAG = NewVersionWorker::class.java.simpleName
-        private const val NEWPIPE_API_URL = "https://newpipe.net/api/data.json"
+        private const val NEWPIPE_API_URL =
+            "https://raw.githubusercontent.com/bravenewpipe/bnp-r-mgr/master/api/data.json"
 
         /**
          * Start a new worker which
