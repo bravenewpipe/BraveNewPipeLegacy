@@ -84,6 +84,15 @@ android {
             versionCode defaultConfig.versionCode + braveVersionCode
             versionName "${defaultConfig.versionName}-${braveVersionName}"
         }
+
+        braveConscrypt {
+            dimension 'default'
+            applicationId "com.github.bravenewpipe"
+            resValue "string", "app_name", "BraveNewPipe"
+            versionCode defaultConfig.versionCode + braveVersionCode
+            versionName "${defaultConfig.versionName}-${braveVersionName}"
+            android.sourceSets.braveConscrypt.res.srcDirs = android.sourceSets.brave.res.srcDirs
+        }
     }
 
     lint {
@@ -296,6 +305,9 @@ dependencies {
 
     // Date and time formatting
     implementation "org.ocpsoft.prettytime:prettytime:5.0.2.Final"
+
+    // conscrypt libraries
+    braveConscryptImplementation 'org.conscrypt:conscrypt-android:2.4.0'
 
 /** Debugging **/
     // Memory leak detection
