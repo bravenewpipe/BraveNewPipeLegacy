@@ -47,7 +47,7 @@ jobs:
       - name: build release
         run: ./gradlew assembleRelease
 
-      - name: Sign app APK
+      - name: Sign app APK brave
         uses: r0adkll/sign-android-release@v1
         # ID used to access action output
         id: sign_app
@@ -59,12 +59,31 @@ jobs:
           keyStorePassword: ${{ secrets.RELEASE_KEYSTORE_PASS }}
           #keyPassword: ${{ secrets.RELEASE_KEYSTORE_PASS }}
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
+      - name: Sign app APK braveConscrypt
+        uses: r0adkll/sign-android-release@v1
+        # ID used to access action output
+        id: sign_app_conscrypt
         with:
-          name: app
+          releaseDirectory: app/build/outputs/apk/braveConscrypt/release
+          signingKeyBase64: ${{ secrets.RELEASE_KEYSTORE }}
+          #alias: ${{ secrets.ALIAS }}
+          alias: alias_name
+          keyStorePassword: ${{ secrets.RELEASE_KEYSTORE_PASS }}
+          #keyPassword: ${{ secrets.RELEASE_KEYSTORE_PASS }}
+
+      - name: Upload brave artifact APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: brave
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
           #path: app/build/outputs/apk/brave/release/*.apk
+
+      - name: Upload brave artifact APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: braveConscrypt
+          path: ${{steps.sign_app_conscrypt.outputs.signedReleaseFile}}
+
       # evermind: How to get just the tag name? -> https://github.community/t/how-to-get-just-the-tag-name/16241/11
       - name: Branch name
         id: branch_name
@@ -80,11 +99,17 @@ jobs:
           SOURCE_BRANCH: ${{ steps.branch_name.outputs.SOURCE_BRANCH }}
           SOURCE_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
           SIGNED_APK: ${{ steps.sign_app.outputs.signedReleaseFile }}
+          SIGNED_APK_CONSCRYPT: ${{ steps.sign_app_conscrypt.outputs.signedReleaseFile }}
         run: |
           echo ::set-output name=RENAMED_APK::${SIGNED_APK%/*}/BraveNewPipe_${SOURCE_TAG}.apk
           cp ${SIGNED_APK} ${SIGNED_APK%/*}/BraveNewPipe_${SOURCE_TAG}.apk
           cd ${SIGNED_APK%/*}
           sha256sum BraveNewPipe_${SOURCE_TAG}.apk > BraveNewPipe_${SOURCE_TAG}.apk.sha256
+          cd -
+          echo ::set-output name=RENAMED_APK_CONSCRYPT::${SIGNED_APK_CONSCRYPT%/*}/BraveNewPipe_conscrypt_${SOURCE_TAG}.apk
+          cp ${SIGNED_APK_CONSCRYPT} ${SIGNED_APK_CONSCRYPT%/*}/BraveNewPipe_conscrypt_${SOURCE_TAG}.apk
+          cd ${SIGNED_APK_CONSCRYPT%/*}
+          sha256sum BraveNewPipe_conscrypt_${SOURCE_TAG}.apk > BraveNewPipe_conscrypt_${SOURCE_TAG}.apk.sha256
           cd -
       # evermind: how to autorelease?: https://github.com/marvinpinto/action-automatic-releases
       - name: auto release
@@ -96,6 +121,8 @@ jobs:
           files: |
             ${{ steps.renamed_apk.outputs.RENAMED_APK }}
             ${{ steps.renamed_apk.outputs.RENAMED_APK }}.sha256
+            ${{ steps.renamed_apk.outputs.RENAMED_APK_CONSCRYPT }}
+            ${{ steps.renamed_apk.outputs.RENAMED_APK_CONSCRYPT }}.sha256
         id: "automatic_releases"
       - name: "Automatically update json api data repository"
         env:

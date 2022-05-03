@@ -85,6 +85,7 @@ BUILD_TOOLS_VERSION="${BUILD_TOOLS_VERSION:-29.0.3}"
 AAPT=$ANDROID_HOME/build-tools/$BUILD_TOOLS_VERSION/aapt
 
 URL="https://github.com/bravenewpipe/NewPipe/releases/download/${TAG}/BraveNewPipe_${TAG}.apk"
+URL_CONSCRYPT="https://github.com/bravenewpipe/NewPipe/releases/download/${TAG}/BraveNewPipe_conscrypt_${TAG}.apk"
 VERSION_NAME=${TAG/v/}
 VERSION_CODE="$($AAPT d badging $APK_FILE | grep -Po "(?<=\sversionCode=')([0-9.-]+)")"
 
@@ -99,6 +100,7 @@ cat $JSON_FILE \
     | jq '.flavors.github.stable.version_code = '${VERSION_CODE}'' \
     | jq '.flavors.github.stable.version = "'${VERSION_NAME}'"' \
     | jq '.flavors.github.stable.apk = "'${URL}'"' \
+    | jq '( .flavors.github.stable.alternative_apks[] | select(.alternative == "conscrypt") ).url |= "'${URL_CONSCRYPT}'"' \
     > $TEMPFILE
 mv $TEMPFILE $JSON_FILE
 
