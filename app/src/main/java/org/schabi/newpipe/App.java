@@ -204,7 +204,7 @@ public class App extends BraveApp {
             return;
         }
 
-        final CoreConfigurationBuilder acraConfig = new CoreConfigurationBuilder(this)
+        final CoreConfigurationBuilder acraConfig = new CoreConfigurationBuilder()
                 .withBuildConfigClass(BuildConfig.class);
         ACRA.init(this, acraConfig);
     }
