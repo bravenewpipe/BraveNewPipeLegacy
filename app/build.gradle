@@ -9,6 +9,7 @@ plugins {
 
 android {
     compileSdk 32
+    namespace 'org.schabi.newpipe'
 
     defaultConfig {
         applicationId "org.polymorphicshade.newpipe"
