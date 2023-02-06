@@ -14,6 +14,8 @@ import org.schabi.newpipe.util.OkHttpTlsHelper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -118,7 +120,11 @@ public final class DownloaderImpl extends Downloader {
     public long getContentLength(final String url) throws IOException {
         try {
             final Response response = head(url);
-            return Long.parseLong(response.getHeader("Content-Length"));
+            if (response.responseCode() == 405) { // HEAD Method not allowed
+                return getContentLengthViaGet(url);
+            } else {
+                return Long.parseLong(response.getHeader("Content-Length"));
+            }
         } catch (final NumberFormatException e) {
             throw new IOException("Invalid content length", e);
         } catch (final ReCaptchaException e) {
@@ -181,5 +187,17 @@ public final class DownloaderImpl extends Downloader {
         final String latestUrl = response.request().url().toString();
         return new Response(response.code(), response.message(), response.headers().toMultimap(),
                 responseBodyToReturn, latestUrl);
+    }
+
+    // some servers eg rumble do not allow HEAD requests anymore (discovered 202300203)
+    private long getContentLengthViaGet(final String url) throws IOException {
+        final HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+        conn.setInstanceFollowRedirects(true);
+        conn.setRequestProperty("User-Agent", USER_AGENT);
+        conn.setRequestProperty("Accept", "*/*");
+        conn.setRequestProperty("Accept-Encoding", "*");
+        final String contentSize = conn.getHeaderField("Content-Length");
+        conn.disconnect();
+        return Long.parseLong(contentSize);
     }
 }
