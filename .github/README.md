@@ -1,22 +1,16 @@
 [Original NewPipe Readme](../README.md)
 ## About this fork
-Due to restrictive project policy, the NewPipeTeam refuses to add platforms that they
-find offensive. This fork (BraveNewPipe) will not be as restrictive. As long as the
-platforms work in the spirit of free speech, they could be integrated.
+This fork is only for use on Android Kitkat aka 4.4 aka SDK 19.
 
-Nevertheless, platforms that promote pornography or other degrading things will
-__NOT__ be included here.
+The codebase is based on (Brave)NewPipe v0.23.3 as this was the last
+version to support Android KitKat. I will only try to maintain the
+functionality.
 
-## Contribute
-This fork will focus only on integrating other platforms. Unrelated patches will
-be rejected for now.
-
-Feel free to suggest which alternative platforms should be included. Any contribution
-(development/testing/bug report) is greatly appreciated.
+No features will be developed or backported by myself. If someone wants a
+feature included, a PR can be created and if suitable I will add it.
 
 ## Which additional platforms are supported?
-- Bitchute
-- Rumble
+Same as [BraveNewPipe](../../../../NewPipe)
 
 ## Reporting bugs
 Most problems with BraveNewPipe should be reported to the NewPipeExtractor
