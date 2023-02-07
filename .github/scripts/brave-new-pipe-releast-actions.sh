@@ -18,15 +18,15 @@ APK_FILE=$2
 
 BNP_R_MGR_REPO="bnp-r-mgr"
 GITHUB_LOGIN="bravenewpipe"
-RELEASE_BODY="Apk available at bravenewpipe/NewPipe@${TAG}](https://github.com/bravenewpipe/NewPipe/releases/tag/${TAG})."
+RELEASE_BODY="Apk available at bravenewpipe/BraveNewPipeLegacy@${TAG}](https://github.com/bravenewpipe/BraveNewPipeLegacy/releases/tag/${TAG})."
 
 PRERELEASE="false"
 if [[ "$TAG" == "latest" ]]; then
   PRERELEASE="true"
 fi
 
-if [[ "$GITHUB_REPOSITORY" != "bravenewpipe/NewPipe" ]]; then
-  echo "This mirror script is only meant to be run from bravenewpipe/NewPipe, not ${GITHUB_REPOSITORY}. Nothing to do here."
+if [[ "$GITHUB_REPOSITORY" != "bravenewpipe/BraveNewPipeLegacy" ]]; then
+  echo "This mirror script is only meant to be run from bravenewpipe/BraveNewPipeLegacy, not ${GITHUB_REPOSITORY}. Nothing to do here."
   exit 0
 fi
 
@@ -84,8 +84,8 @@ create_tagged_release() {
 BUILD_TOOLS_VERSION="${BUILD_TOOLS_VERSION:-29.0.3}"
 AAPT=$ANDROID_HOME/build-tools/$BUILD_TOOLS_VERSION/aapt
 
-URL="https://github.com/bravenewpipe/NewPipe/releases/download/${TAG}/BraveNewPipe_${TAG}.apk"
-URL_CONSCRYPT="https://github.com/bravenewpipe/NewPipe/releases/download/${TAG}/BraveNewPipe_conscrypt_${TAG}.apk"
+URL="https://github.com/bravenewpipe/BraveNewPipeLegacy/releases/download/${TAG}/BraveNewPipeLegacy_${TAG}.apk"
+URL_CONSCRYPT="https://github.com/bravenewpipe/BraveNewPipeLegacy/releases/download/${TAG}/BraveNewPipeLegacy_conscrypt_${TAG}.apk"
 VERSION_NAME=${TAG/v/}
 VERSION_CODE="$($AAPT d badging $APK_FILE | grep -Po "(?<=\sversionCode=')([0-9.-]+)")"
 
@@ -94,7 +94,7 @@ JSON_FILE=/tmp/${BNP_R_MGR_REPO}/api/data.json
 
 # checkout json release file repo
 rm -rf "/tmp/${BNP_R_MGR_REPO}"
-git clone "https://bravenewpipe:${GITHUB_SUPER_TOKEN}@github.com/bravenewpipe/${BNP_R_MGR_REPO}.git" /tmp/${BNP_R_MGR_REPO}
+git clone --branch kitkat "https://bravenewpipe:${GITHUB_SUPER_TOKEN}@github.com/bravenewpipe/${BNP_R_MGR_REPO}.git" /tmp/${BNP_R_MGR_REPO}
 # update version{code,name} and download url
 cat $JSON_FILE \
     | jq '.flavors.github.stable.version_code = '${VERSION_CODE}'' \

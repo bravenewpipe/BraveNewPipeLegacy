@@ -84,8 +84,8 @@ ext.alterFilesAndVerify = { targetDir, isTest ->
         replaceAndVerify('m', false, targetDir,
                 /* filename: */ 'org/schabi/newpipe/NewVersionWorker.kt',
                 /* match: */ '(private const val NEWPIPE_API_URL =).*',
-                /* replace: */ '\\1\n            "https://raw.githubusercontent.com/bravenewpipe/bnp-r-mgr/master/api/data.json"',
-                /* verify: */ '"https://raw.githubusercontent.com/bravenewpipe/bnp-r-mgr/master/api/data.json"')
+                /* replace: */ '\\1\n            "https://raw.githubusercontent.com/bravenewpipe/bnp-r-mgr/kitkat/api/data.json"',
+                /* verify: */ '"https://raw.githubusercontent.com/bravenewpipe/bnp-r-mgr/kitkat/api/data.json"')
     }
 
     return "${targetDir}"

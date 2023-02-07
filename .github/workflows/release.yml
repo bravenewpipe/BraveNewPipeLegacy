@@ -101,15 +101,15 @@ jobs:
           SIGNED_APK: ${{ steps.sign_app.outputs.signedReleaseFile }}
           SIGNED_APK_CONSCRYPT: ${{ steps.sign_app_conscrypt.outputs.signedReleaseFile }}
         run: |
-          echo ::set-output name=RENAMED_APK::${SIGNED_APK%/*}/BraveNewPipe_${SOURCE_TAG}.apk
-          cp ${SIGNED_APK} ${SIGNED_APK%/*}/BraveNewPipe_${SOURCE_TAG}.apk
+          echo ::set-output name=RENAMED_APK::${SIGNED_APK%/*}/BraveNewPipeLegacy_${SOURCE_TAG}.apk
+          cp ${SIGNED_APK} ${SIGNED_APK%/*}/BraveNewPipeLegacy_${SOURCE_TAG}.apk
           cd ${SIGNED_APK%/*}
-          sha256sum BraveNewPipe_${SOURCE_TAG}.apk > BraveNewPipe_${SOURCE_TAG}.apk.sha256
+          sha256sum BraveNewPipeLegacy_${SOURCE_TAG}.apk > BraveNewPipeLegacy_${SOURCE_TAG}.apk.sha256
           cd -
-          echo ::set-output name=RENAMED_APK_CONSCRYPT::${SIGNED_APK_CONSCRYPT%/*}/BraveNewPipe_conscrypt_${SOURCE_TAG}.apk
-          cp ${SIGNED_APK_CONSCRYPT} ${SIGNED_APK_CONSCRYPT%/*}/BraveNewPipe_conscrypt_${SOURCE_TAG}.apk
+          echo ::set-output name=RENAMED_APK_CONSCRYPT::${SIGNED_APK_CONSCRYPT%/*}/BraveNewPipeLegacy_conscrypt_${SOURCE_TAG}.apk
+          cp ${SIGNED_APK_CONSCRYPT} ${SIGNED_APK_CONSCRYPT%/*}/BraveNewPipeLegacy_conscrypt_${SOURCE_TAG}.apk
           cd ${SIGNED_APK_CONSCRYPT%/*}
-          sha256sum BraveNewPipe_conscrypt_${SOURCE_TAG}.apk > BraveNewPipe_conscrypt_${SOURCE_TAG}.apk.sha256
+          sha256sum BraveNewPipeLegacy_conscrypt_${SOURCE_TAG}.apk > BraveNewPipeLegacy_conscrypt_${SOURCE_TAG}.apk.sha256
           cd -
       # evermind: how to autorelease?: https://github.com/marvinpinto/action-automatic-releases
       - name: auto release
