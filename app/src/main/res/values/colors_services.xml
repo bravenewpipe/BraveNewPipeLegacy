@@ -34,13 +34,15 @@
     <color name="dark_peertube_statusbar_color">#a34700</color>
 
     <!-- BitChute -->
-    <color name="light_bitchute_primary_color">#ef4038</color>
-    <color name="light_bitchute_dark_color">#b50010</color>
+    <color name="light_bitchute_primary_color">#EC4036</color>
+    <color name="light_bitchute_dark_color">#AF3028</color>
     <color name="light_bitchute_accent_color">#000000</color>
+    <color name="light_bitchute_statusbar_color">#EC4036</color>
 
-    <color name="dark_bitchute_primary_color">#ef4038</color>
-    <color name="dark_bitchute_dark_color">#b50010</color>
+    <color name="dark_bitchute_primary_color">#972721</color>
+    <color name="dark_bitchute_dark_color">#631915</color>
     <color name="dark_bitchute_accent_color">#FFFFFF</color>
+    <color name="dark_bitchute_statusbar_color">#972721</color>
 
     <!-- Rumble -->
     <color name="light_rumble_primary_color">#73CA1D</color>
