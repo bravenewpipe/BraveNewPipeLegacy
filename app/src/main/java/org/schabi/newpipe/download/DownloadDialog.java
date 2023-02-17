@@ -62,6 +62,7 @@ import org.schabi.newpipe.util.ListHelper;
 import org.schabi.newpipe.util.PermissionHelper;
 import org.schabi.newpipe.util.SecondaryStreamHelper;
 import org.schabi.newpipe.util.SimpleOnSeekBarChangeListener;
+import org.schabi.newpipe.util.SponsorBlockUtils;
 import org.schabi.newpipe.util.StreamItemAdapter;
 import org.schabi.newpipe.util.StreamItemAdapter.StreamSizeWrapper;
 import org.schabi.newpipe.util.ThemeHelper;
@@ -75,7 +76,10 @@ import java.util.Objects;
 
 import icepick.Icepick;
 import icepick.State;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 import us.shandian.giga.get.MissionRecoveryInfo;
 import us.shandian.giga.postprocessing.Postprocessing;
 import us.shandian.giga.service.DownloadManager;
@@ -84,6 +88,7 @@ import us.shandian.giga.service.DownloadManagerService.DownloadManagerBinder;
 import us.shandian.giga.service.MissionState;
 
 import static org.schabi.newpipe.extractor.stream.DeliveryMethod.PROGRESSIVE_HTTP;
+import static org.schabi.newpipe.ktx.ViewUtils.animate;
 import static org.schabi.newpipe.util.ListHelper.getStreamsOfSpecifiedDelivery;
 import static org.schabi.newpipe.util.Localization.assureCorrectAppLanguage;
 
@@ -255,7 +260,7 @@ public class DownloadDialog extends DialogFragment
                 downloadManager = mgr.getDownloadManager();
                 askForSavePath = mgr.askForSavePath();
 
-                okButton.setEnabled(true);
+                checkForYoutubeVideoSegments();
 
                 context.unbindService(this);
             }
@@ -295,6 +300,8 @@ public class DownloadDialog extends DialogFragment
         dialogBinding.qualitySpinner.setOnItemSelectedListener(this);
 
         dialogBinding.videoAudioGroup.setOnCheckedChangeListener(this);
+
+        showLoading();
 
         initToolbar(dialogBinding.toolbarLayout.toolbar);
         setupDownloadOptions();
@@ -1038,5 +1045,38 @@ public class DownloadDialog extends DialogFragment
                 Toast.LENGTH_SHORT).show();
 
         dismiss();
+    }
+
+    private void checkForYoutubeVideoSegments() {
+        disposables.add(Single.fromCallable(() -> {
+                    VideoSegment[] videoSegments = null;
+                    try {
+                        videoSegments = SponsorBlockUtils
+                                .getYouTubeVideoSegments(getContext(), currentInfo);
+                    } catch (final Exception e) {
+                        // TODO: handle?
+                    }
+
+                    return videoSegments == null
+                            ? new VideoSegment[0]
+                            : videoSegments;
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(videoSegments -> {
+                    setVideoSegments(videoSegments);
+                    okButton.setEnabled(true);
+                    hideLoading();
+                }));
+    }
+
+    public void showLoading() {
+        dialogBinding.fileName.setVisibility(View.GONE);
+        animate(dialogBinding.loadingProgressBar, true, 400);
+    }
+
+    public void hideLoading() {
+        animate(dialogBinding.loadingProgressBar, false, 0);
+        dialogBinding.fileName.setVisibility(View.VISIBLE);
     }
 }
