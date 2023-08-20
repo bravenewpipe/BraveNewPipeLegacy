@@ -79,6 +79,7 @@ import icepick.State;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
+import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import us.shandian.giga.get.MissionRecoveryInfo;
 import us.shandian.giga.postprocessing.Postprocessing;
@@ -147,6 +148,8 @@ public class DownloadDialog extends DialogFragment
     private final ActivityResultLauncher<Intent> requestDownloadPickVideoFolderLauncher =
             registerForActivityResult(
                     new StartActivityForResult(), this::requestDownloadPickVideoFolderResult);
+    @NonNull
+    private Disposable youtubeVideoSegmentsDisposable;
 
 
     /*//////////////////////////////////////////////////////////////////////////
@@ -266,8 +269,6 @@ public class DownloadDialog extends DialogFragment
                 downloadManager = mgr.getDownloadManager();
                 askForSavePath = mgr.askForSavePath();
 
-                checkForYoutubeVideoSegments();
-
                 context.unbindService(this);
             }
 
@@ -310,6 +311,7 @@ public class DownloadDialog extends DialogFragment
         showLoading();
 
         initToolbar(dialogBinding.toolbarLayout.toolbar);
+        checkForYoutubeVideoSegments();
         setupDownloadOptions();
 
         prefs = PreferenceManager.getDefaultSharedPreferences(requireContext());
@@ -371,6 +373,7 @@ public class DownloadDialog extends DialogFragment
 
     @Override
     public void onDestroyView() {
+        youtubeVideoSegmentsDisposable.dispose();
         dialogBinding = null;
         super.onDestroyView();
     }
@@ -1054,7 +1057,7 @@ public class DownloadDialog extends DialogFragment
     }
 
     private void checkForYoutubeVideoSegments() {
-        disposables.add(Single.fromCallable(() -> {
+        youtubeVideoSegmentsDisposable = Single.fromCallable(() -> {
                     VideoSegment[] videoSegments = null;
                     try {
                         videoSegments = SponsorBlockUtils
@@ -1073,7 +1076,7 @@ public class DownloadDialog extends DialogFragment
                     setVideoSegments(videoSegments);
                     okButton.setEnabled(true);
                     hideLoading();
-                }));
+                });
     }
 
     public void showLoading() {
