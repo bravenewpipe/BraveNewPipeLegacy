@@ -315,7 +315,7 @@ dependencies {
     implementation "org.ocpsoft.prettytime:prettytime:5.0.3.Final"
 
     // conscrypt libraries
-    braveConscryptImplementation 'org.conscrypt:conscrypt-android:2.4.0'
+    braveConscryptImplementation 'org.conscrypt:conscrypt-android:2.5.2'
 
 /** Debugging **/
     // Memory leak detection

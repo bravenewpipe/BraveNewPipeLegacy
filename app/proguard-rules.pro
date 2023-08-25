@@ -54,3 +54,7 @@
 
 # for some reason NotificationModeConfigFragment wasn't kept (only referenced in a preference xml)
 -keep class org.schabi.newpipe.settings.notifications.** { *; }
+
+# conscrypt rules
+-dontwarn com.android.org.conscrypt.SSLParametersImpl
+-dontwarn org.apache.harmony.xnet.provider.jsse.SSLParametersImpl
