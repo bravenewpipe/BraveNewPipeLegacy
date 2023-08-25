@@ -19,6 +19,7 @@ on:
     branches:
       - dev
       - master
+      - kitkat
     paths-ignore:
       - 'README.md'
       - 'doc/**'
