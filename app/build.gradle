@@ -16,7 +16,7 @@ android {
         resValue "string", "app_name", "NewPipe SponsorBlock"
         minSdk 19
         targetSdk 29
-        versionCode 989
+        versionCode 990
         versionName "0.23.3"
 
         multiDexEnabled true
@@ -75,7 +75,7 @@ android {
         def braveVersionCode = 19000
         // -> our versionName will be added as suffix to defaultConfig.versionName
         // We use major.minor.patch
-        def braveVersionName = "2.1.1-1" // -[DIGIT] used as upstream NewPipe will not update.
+        def braveVersionName = "2.1.1-2" // -[DIGIT] used as upstream NewPipe will not update.
 
         brave {
             dimension 'default'
