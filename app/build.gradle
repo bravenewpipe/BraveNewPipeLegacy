@@ -312,7 +312,7 @@ dependencies {
     implementation "com.jakewharton.rxbinding4:rxbinding:4.0.0"
 
     // Date and time formatting
-    implementation "org.ocpsoft.prettytime:prettytime:5.0.3.Final"
+    implementation "org.ocpsoft.prettytime:prettytime:5.0.7.Final"
 
     // conscrypt libraries
     braveConscryptImplementation 'org.conscrypt:conscrypt-android:2.5.2'
