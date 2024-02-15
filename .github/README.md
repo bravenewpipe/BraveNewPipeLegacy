@@ -1,3 +1,9 @@
+# ------- 20240215 -----
+**Sadly I have no time to maintain this project at the moment.**
+
+
+------------------------
+
 [Original NewPipe Readme](http://github.com/TeamNewPipe/NewPipe/#readme)
 
 ## About this fork
