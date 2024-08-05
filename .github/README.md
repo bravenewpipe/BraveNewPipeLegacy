@@ -1,3 +1,10 @@
+# ------- 20240805 -----
+**Good News: Kitkat support is integrated in BraveNewPipe**
+
+[BraveNewPipe](https://github.com/bravenewpipe/NewPipe)
+
+download and install: `BraveNewPipe_legacy_<TAG>.apk`
+
 # ------- 20240215 -----
 **Sadly I have no time to maintain this project at the moment.**
 
